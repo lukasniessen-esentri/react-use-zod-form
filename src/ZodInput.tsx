@@ -1,8 +1,32 @@
-import React from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
 import { z, ZodSchema, ZodError } from 'zod';
+import { generateRandomString } from './utils/RandomID';
 
-export const ZodInput = ({ zodSchema: ZodSchema, ...rest }) => (
-  <>
-    <input type="text" {...rest} />
-  </>
-);
+
+// Define a new type that extends the existing input props type
+interface ZodInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  schema?: ZodSchema;
+}
+
+export const ZodInput: React.FC<ZodInputProps> = ({ schema: ZodSchema, ...props }) => {
+
+  //const [value, setValue] = useState("");
+
+  // Check if props specify a name. If not, generate a random one.
+  // needed for later accessing the form key value pairs data.
+  const name = props.name ? props.name : generateRandomString();
+
+  //function updateValue(e) {
+//    setValue(e.target.value);
+  //}
+
+  return (
+    <input
+      name={name}
+      //value={value}
+      //onChange={updateValue}
+      {...props} 
+    />
+  );
+
+}

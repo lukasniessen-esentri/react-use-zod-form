@@ -7,10 +7,14 @@ export const ZodForm = ({ handleSubmit, handleError, children }) => {
     function onSubmit(event) {
       event.preventDefault();
 
-      console.log(event);
-      console.log(event.target);
+      console.log("event.target:",event.target);
 
       // { name: 'Stackoverflow', ... } 
+      const formData = new FormData(event.target);
+      console.log("formData:",formData);
+      const entries = formData.entries();
+      console.log("entries:",entries);
+
       const formValues = Object.fromEntries(new FormData(event.target).entries());
       console.log("formValues:",formValues);
 
@@ -38,5 +42,9 @@ export const ZodForm = ({ handleSubmit, handleError, children }) => {
       }
     };
   
-    return <form onSubmit={onSubmit}>{children}</form>;
+    return (
+        <form onSubmit={onSubmit}>
+            {children}
+        </form>
+    );
   };

@@ -1,14 +1,14 @@
 {
-  "name": "react-zod-form",
-  "version": "1.0.0",
+  "name": "@lukasniessenesentri/react-zod-form",
+  "version": "1.0.6",
   "description": "Performant, flexible and extensible forms library for React Hooks using Zod",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/lukasniessen-esentri/react-use-zod-form"
+    "url": "git+https://github.com/lukasniessen-esentri/react-use-zod-form.git"
   },
   "keywords": [
     "react",
@@ -26,9 +26,8 @@
   },
   "homepage": "https://github.com/lukasniessen-esentri/react-use-zod-form#readme",
   "dependencies": {
-    "@hookform/resolvers": "^3.3.4",
-    "react": "^18.2.0",
-    "react-hook-form": "^7.51.0",
+    "react": "^16.8.0 || ^17 || ^18",
     "zod": "^3.22.4"
-  }
+  },
+  "devDependencies": {}
 }
