@@ -1,0 +1,42 @@
+import React, { useState } from 'react';
+import { ZodInput } from './ZodInput';
+import { z, ZodSchema, ZodError } from 'zod';
+
+export const ZodForm = ({ handleSubmit, handleError, children }) => {
+
+    function onSubmit(event) {
+      event.preventDefault();
+
+      console.log(event);
+      console.log(event.target);
+
+      // { name: 'Stackoverflow', ... } 
+      const formValues = Object.fromEntries(new FormData(event.target).entries());
+      console.log("formValues:",formValues);
+
+      //formValues = formValues
+        //            .filter((el) => el.name)
+          //          .reduce((obj, el) => ({ ...obj, [el.name]: el.value }), {});
+  
+      const errors = React.Children.toArray(children)
+        .map((child) => {
+          if (child.props.schema) {
+            const schema = z.object({ [child.props.name]: child.props.schema });
+            const result = schema.safeParse({ [child.props.name]: formValues[child.props.name] });
+            if (!result.success) {
+              return result.error.errors[0].message;
+            }
+          }
+          return null;
+        })
+        .filter(Boolean);
+  
+      if (errors.length > 0) {
+        handleError(errors);
+      } else {
+        handleSubmit(formValues);
+      }
+    };
+  
+    return <form onSubmit={onSubmit}>{children}</form>;
+  };
