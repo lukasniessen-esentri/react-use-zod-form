@@ -1,47 +1,60 @@
-import React, { useState } from 'react';
-import { ZodInput } from './ZodInput';
-import { z, ZodSchema, ZodError } from 'zod';
+import React from 'react';
+import { z } from 'zod';
 
-export const ZodForm = ({ handleSubmit, handleError, children }) => {
+export const ZodForm = ({ onSubmit, children }) => {
 
-    function onSubmit(event) {
-        console.log("onSubmit...!!");
+    function handleSubmit(event) {
+        event.preventDefault();
+
+        // { name: 'Stackoverflow', ... } 
+        const formValues = Object.fromEntries(new FormData(event.target).entries());
+        console.log("formValues:",formValues);
     
-      event.preventDefault();
+        const childrenArray = React.Children.toArray(children);
+        console.log("childrenArray:",childrenArray);
+        console.log("childrenArray:",childrenArray);
 
-      console.log("event.target:",event.target);
+        let isExistError = false;
 
-      // { name: 'Stackoverflow', ... } 
-      const formData = new FormData(event.target);
-      console.log("formData:",formData);
-      const entries = formData.entries();
-      console.log("entries:",entries);
+        for (let i=0; i<childrenArray.length; i++) {
+            const child = childrenArray[i];
+            
+            // TODO: check child type
+            // TYPING
 
-      const formValues = Object.fromEntries(new FormData(event.target).entries());
-      console.log("formValues:",formValues);
-  
-      const errors = React.Children.toArray(children)
-        .map((child) => {
-          if (child.props.schema) {
-            const schema = z.object({ [child.props.name]: child.props.schema });
-            const result = schema.safeParse({ [child.props.name]: formValues[child.props.name] });
-            if (!result.success) {
-              return result.error.errors[0].message;
+            const schema = child.props.schema;
+            const onError = child.props.onError;
+
+            console.log("schema:",schema);
+            console.log("handleError:",onError);
+
+            let errorMessage: string | null = null;
+
+            if (schema) {
+                const schema = z.object({ [child.props.name]: child.props.schema });
+                const result = schema.safeParse({ [child.props.name]: formValues[child.props.name] });
+
+                if (!result.success) {
+                    isExistError = true;
+                    errorMessage = result.error.errors[0].message;
+                }
             }
-          }
-          return null;
-        })
-        .filter(Boolean);
-  
-      if (errors.length > 0) {
-        handleError(errors);
-      } else {
-        handleSubmit(formValues);
-      }
+            console.log("errorMessage:",errorMessage);
+
+            // handle error in any case, in success case signaling the success
+            if (onError) {
+                onError(errorMessage);
+            }
+        }
+
+        console.log("isExistError:",isExistError);
+        if (!isExistError) {
+            onSubmit(formValues);
+        }
     };
     
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={handleSubmit}>
             {children}
             <input type="submit" style={{ display: 'none' }} />
         </form>

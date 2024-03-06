@@ -1,18 +1,18 @@
 # TODO URGENT
 
-- Error handling, good response typed object
+- Type safety. Whole thing is rather JS than TS. Make it all typed.
 
-- Name given if not specified is random for now. Probably not good.
+- Allow not specifying names! Random does not work yet
 
 - Specify zod dependency version better (the least required)
-
-- (?) Move handle error to input level, not form level. More handy probably
 
 - More flexible than just input? Maybe inherit from other class? / extend
 
 - Submit button can be added
 
 - Other elements can be added as well
+
+- Add optional schemaArray param, for example for a password you want multiple with each having a specific error msg
 
 # TODO OTHER
 
