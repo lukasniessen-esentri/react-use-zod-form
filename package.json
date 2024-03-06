@@ -26,8 +26,14 @@
   },
   "homepage": "https://github.com/lukasniessen-esentri/react-use-zod-form#readme",
   "dependencies": {
-    "react": "^16.8.0 || ^17 || ^18",
+    "react": "^18.2.0",
     "zod": "^3.22.4"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "@types/react": "^18.2.63",
+    "@types/react-dom": "^18.2.20",
+    "react-dom": "^18.2.0",
+    "react": "^18.2.0",
+    "zod": "^3.22.4"
+  }
 }

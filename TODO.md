@@ -14,6 +14,18 @@
 
 - Add optional schemaArray param, for example for a password you want multiple with each having a specific error msg
 
+- Better types, better project structure
+
+- Even less boilerplate
+
+- Maybe shorter names?
+
+- Allow schema on form so you can also have schema for multiple inputs
+
+- "ALL children with input must have "name" property set to function properly" --> Add warning
+
 # TODO OTHER
 
 - Check rerendering logic. Must be perfect
+
+- Make sure super performant and compare to other libraries

@@ -1,11 +1,10 @@
-import React, { InputHTMLAttributes, useMemo } from 'react';
+import React, { InputHTMLAttributes } from 'react';
 import { ZodSchema } from 'zod';
-import { generateRandomString } from './utils/RandomID';
 import { ErrorHandler } from './ErrorHandler';
 
 
 /**
- * 
+ *  
  * Type that extends the existing input props type
  * 
  * ---
@@ -21,10 +20,12 @@ import { ErrorHandler } from './ErrorHandler';
  * Therefore, this can also be used as a successIndicator: inputValid = errorMessage === null;
  * E.g. useful for indicating which validations are satisfied and which are not, like on a password you have multiple for example.
  */
-interface ZodInputProps extends InputHTMLAttributes<HTMLInputElement> {
-  schema?: ZodSchema;
-  onError: ErrorHandler;
+export interface ZodInputProps extends InputHTMLAttributes<HTMLInputElement> {
+  schema?: ZodSchema<any>;
+  handleError?: ErrorHandler;
+  name: string;
 }
+
 
 export const ZodInput: React.FC<ZodInputProps> = ({ schema, handleError, ...props }) => {
 
@@ -32,12 +33,12 @@ export const ZodInput: React.FC<ZodInputProps> = ({ schema, handleError, ...prop
   // needed for later accessing the form key value pairs data.
   // TODO
   // NOT WORKING!!!!! BREAKS I GUESS DUE TO RERENDERING
-  const name = useMemo(() => props.name ? props.name : generateRandomString(), [schema, handleError, props]);
+  //const name = useMemo(() => props.name ? props.name : generateRandomString(), [schema, handleError, props]);
 
   return (
     <input
-      name={name}
-      {...props} 
+      {...props}
+      name={props.name}
     />
   );
 
