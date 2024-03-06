@@ -8,9 +8,11 @@
 
 - (?) Move handle error to input level, not form level. More handy probably
 
-- Breaks when you add more than one ZodInput. Fix
-
 - More flexible than just input? Maybe inherit from other class? / extend
+
+- Submit button can be added
+
+- Other elements can be added as well
 
 # TODO OTHER
 
