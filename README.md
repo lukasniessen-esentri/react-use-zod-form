@@ -1,4 +1,6 @@
-# Form validation with Zod and zero boilerplate code
+# Form validation with Zod: ZERO boilerplate code.
+
+Unfinished test version.
 
 Installation:
 `npm i @lukasniessenesentri/react-zod-form`
@@ -37,7 +39,6 @@ function App() {
   }
 
   function handleSubmit(formData: any) {
-    console.log("SUBMIT SUCCESSFUL");
     setSuccess(JSON.stringify(formData));
     console.log(formData);
     
