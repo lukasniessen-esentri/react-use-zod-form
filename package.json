@@ -1,6 +1,6 @@
 {
   "name": "@lukasniessenesentri/react-zod-form",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Performant, flexible and extensible forms library for React Hooks using Zod",
   "main": "src/index.ts",
   "scripts": {
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lukasniessen-esentri/react-use-zod-form.git"
+    "url": "git+https://github.com/lukasniessen-esentri/react-zod-form.git"
   },
   "keywords": [
     "react",
@@ -22,9 +22,9 @@
   "author": "Lukas Nießen",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/lukasniessen-esentri/react-use-zod-form/issues"
+    "url": "https://github.com/lukasniessen-esentri/react-zod-form/issues"
   },
-  "homepage": "https://github.com/lukasniessen-esentri/react-use-zod-form#readme",
+  "homepage": "https://github.com/lukasniessen-esentri/react-zod-form#readme",
   "dependencies": {
     "react": "^18.2.0",
     "zod": "^3.22.4"
