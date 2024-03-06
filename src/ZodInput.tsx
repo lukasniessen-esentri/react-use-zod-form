@@ -10,21 +10,13 @@ interface ZodInputProps extends InputHTMLAttributes<HTMLInputElement> {
 
 export const ZodInput: React.FC<ZodInputProps> = ({ schema: ZodSchema, ...props }) => {
 
-  //const [value, setValue] = useState("");
-
   // Check if props specify a name. If not, generate a random one.
   // needed for later accessing the form key value pairs data.
   const name = props.name ? props.name : generateRandomString();
 
-  //function updateValue(e) {
-//    setValue(e.target.value);
-  //}
-
   return (
     <input
       name={name}
-      //value={value}
-      //onChange={updateValue}
       {...props} 
     />
   );

@@ -1,8 +1,6 @@
-# TODO
+# TODO URGENT
 
-- Check rerendering logic. Must be perfect
-
-- Error handling
+- Error handling, good response typed object
 
 - Name given if not specified is random for now. Probably not good.
 
@@ -13,3 +11,7 @@
 - Breaks when you add more than one ZodInput. Fix
 
 - More flexible than just input? Maybe inherit from other class? / extend
+
+# TODO OTHER
+
+- Check rerendering logic. Must be perfect

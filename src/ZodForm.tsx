@@ -5,6 +5,8 @@ import { z, ZodSchema, ZodError } from 'zod';
 export const ZodForm = ({ handleSubmit, handleError, children }) => {
 
     function onSubmit(event) {
+        console.log("onSubmit...!!");
+    
       event.preventDefault();
 
       console.log("event.target:",event.target);
@@ -17,10 +19,6 @@ export const ZodForm = ({ handleSubmit, handleError, children }) => {
 
       const formValues = Object.fromEntries(new FormData(event.target).entries());
       console.log("formValues:",formValues);
-
-      //formValues = formValues
-        //            .filter((el) => el.name)
-          //          .reduce((obj, el) => ({ ...obj, [el.name]: el.value }), {});
   
       const errors = React.Children.toArray(children)
         .map((child) => {
@@ -41,10 +39,11 @@ export const ZodForm = ({ handleSubmit, handleError, children }) => {
         handleSubmit(formValues);
       }
     };
-  
+    
     return (
         <form onSubmit={onSubmit}>
             {children}
+            <input type="submit" style={{ display: 'none' }} />
         </form>
     );
   };
