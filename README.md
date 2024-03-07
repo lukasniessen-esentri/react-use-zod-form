@@ -8,7 +8,7 @@ Installation:
 Working example:
 
 ```
-import { ZodForm, ZodInput } from 'react-zod-form';
+import { ZodForm, ZodInput, ZodTextarea } from 'react-zod-form';
 import './App.css'
 import z from "zod";
 import { useState } from 'react';
@@ -17,9 +17,11 @@ function App() {
 
   const mailSchema = z.string().email("Invalid email");
   const min10 = z.string().min(10, "Too short");
+  const min20 = z.string().min(20, "Too short bro");
 
   const [errorName, setErrorName] = useState("");
   const [errorMail, setErrorMail] = useState("");
+  const [errorSuperLong, setErrorSuperLong] = useState("");
   const [success, setSuccess] = useState("");
 
   function onErrorMail(msg: string | null) {
@@ -38,7 +40,16 @@ function App() {
     }
   }
 
+  function onErrorLong(msg: string | null) {
+    if (msg) {
+      setErrorSuperLong(msg);
+    } else {
+      setErrorSuperLong("");
+    }
+  }
+
   function handleSubmit(formData: any) {
+    console.log("SUBMIT SUCCESSFUL");
     setSuccess(JSON.stringify(formData));
     console.log(formData);
     
@@ -64,15 +75,13 @@ function App() {
         />
         <p>{errorMail}</p>
 
-        <input 
-          name="sth3" 
-          placeholder="Cool..."
+        <ZodTextarea 
+          name="long" 
+          schema={min20}
+          placeholder="Longer..."
+          handleError={onErrorLong}
         />
-
-        <ZodInput 
-          name="sth4" 
-          placeholder="Something..."
-        />
+        <p>{errorSuperLong}</p>
 
       </ZodForm>
 
