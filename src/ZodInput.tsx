@@ -1,6 +1,7 @@
-import React, { InputHTMLAttributes } from 'react';
+import React, { InputHTMLAttributes, useState } from 'react';
 import { ZodSchema } from 'zod';
 import { ErrorHandler } from './ErrorHandler';
+import { generateRandomString } from './utils/RandomID';
 
 
 /**
@@ -26,14 +27,9 @@ export interface ZodInputProps extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
 }
 
-
 export const ZodInput: React.FC<ZodInputProps> = ({ schema, handleError, ...props }) => {
-
-  // Check if props specify a name. If not, generate a random one.
-  // needed for later accessing the form key value pairs data.
-  // TODO
-  // NOT WORKING!!!!! BREAKS I GUESS DUE TO RERENDERING
-  //const name = useMemo(() => props.name ? props.name : generateRandomString(), [schema, handleError, props]);
+  
+  const [name] = useState(() => props.name ? props.name : generateRandomString());
 
   return (
     <input

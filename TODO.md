@@ -1,11 +1,5 @@
 # TODO URGENT
 
-- Type safety. Whole thing is rather JS than TS. Make it all typed.
-
-- Allow not specifying names! Random does not work yet
-
-- Specify zod dependency version better (the least required)
-
 - More flexible than just input? Maybe inherit from other class? / extend
 
 - Submit button can be added
@@ -29,3 +23,9 @@
 - Check rerendering logic. Must be perfect
 
 - Make sure super performant and compare to other libraries
+
+---
+
+# Probably not
+
+(- Allow not specifying names! Random does not work yet)
