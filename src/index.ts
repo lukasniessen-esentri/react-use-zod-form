@@ -1,3 +1,4 @@
 
-export { ZodInput } from './ZodInput';
-export { ZodForm } from './ZodForm';
+export { ZodInput } from './components/ZodInput';
+export { ZodForm } from './components/ZodForm';
+export { ZodTextarea } from './components/ZodTextarea';

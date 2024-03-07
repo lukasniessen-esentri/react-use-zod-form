@@ -1,15 +1,9 @@
 
 import React, { FC, FormEvent } from 'react';
-import { ZodInput, ZodInputProps } from './ZodInput';
-
-type FormValues = {
-    [k: string]: FormDataEntryValue;
-};
-
-interface ZodFormProps {
-    onSubmit: (formValues: FormValues) => void;
-    children: React.ReactNode;
-}
+import { ZodProps } from '../types/ZodInputProps';
+import { FormValues } from '../types/FormValues';
+import { ZodFormProps } from '../types/ZodFormProps';
+import { isElementZodBaseField } from '../utils/ZodBaseFieldCheck';
 
 /**
  * ALL children with input must have "name" property set to function properly
@@ -29,17 +23,22 @@ export const ZodForm: FC<ZodFormProps> = (props) => {
         for (let i=0; i<children.length; i++) {
             const child = children[i];
             
-            // We only check ZodInput elements
-            if (React.isValidElement(child) && child.type === ZodInput) {
-                const props = child.props as ZodInputProps;
+            // Make sure its a valid element
+            if (!React.isValidElement(child)) {
+                continue;
+            }
+
+            // We only check ZodBaseField elements
+            if (isElementZodBaseField(child)) {
+                const props = child.props as ZodProps;
 
                 const schema = props.schema;
                 const handleError = props.handleError;
                 const name = props.name;
 
-                //console.log("> schema:",schema);
-                //console.log("> handleError:",handleError);
-                //console.log("> name:",name);
+                console.log("> schema:",schema);
+                console.log("> handleError:",handleError);
+                console.log("> name:",name);
 
                 let errorMessage: string | null = null;
 
