@@ -5,6 +5,9 @@ Unfinished test version.
 Installation:
 `npm i @lukasniessenesentri/react-zod-form`
 
+Uses monkey patching for defining attributes on all form related elements
+and thereby allows writing form validaiton with zero-boilerplate code.
+
 Working example:
 
 ```

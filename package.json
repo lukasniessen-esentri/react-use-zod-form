@@ -3,6 +3,7 @@
   "version": "1.0.10",
   "description": "Performant, flexible and extensible forms library for React Hooks using Zod",
   "main": "src/index.ts",
+  "types": "zodform.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

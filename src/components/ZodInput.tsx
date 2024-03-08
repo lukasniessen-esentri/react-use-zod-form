@@ -5,6 +5,7 @@ export const ZodInput: React.FC<ZodInputProps> = ({ schema, handleError, ...prop
 
   return (
     <input
+      zs={schema}
       {...props}
       name={props.name}
     />

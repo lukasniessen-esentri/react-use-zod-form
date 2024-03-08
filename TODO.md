@@ -1,12 +1,24 @@
 # TODO URGENT
 
+- Add alternative way of doing it for UI libraries:
+<ZI validation="..." name="...">
+    <YourInputElement ... />
+</ZI>
+Or name must be in YourInputEl.
+Similar thing for form. <ZF> ... </ZF> maybe.
+
+OR consider this:
+inputs must have an ID. That ID must be used in a zodvalidator 
+
+- Allow non-zod validation
+
 - Password form example add, with (list-passed-not-passed-tests)
 
 - Docs gut machen
 
 - Allow schema on form so you can also have schema for multiple inputs
 
-- Make sure it can be used for UI libraries as well, put example in docs. !!!
+- Make sure it can be used for UI libraries as well, put example in docs !!!
 
 - Submit button can be added
 
@@ -16,7 +28,7 @@
 
 - Even less boilerplate
 
-- "ALL children with input must have "name" property set to function properly" --> Add warning
+- "ALL children with input should have "name" property set to function properly" --> Add warning
 
 # TODO OTHER
 

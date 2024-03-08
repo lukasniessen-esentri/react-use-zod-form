@@ -36,9 +36,9 @@ export const ZodForm: FC<ZodFormProps> = (props) => {
                 const handleError = props.handleError;
                 const name = props.name;
 
-                console.log("> schema:",schema);
-                console.log("> handleError:",handleError);
-                console.log("> name:",name);
+                //console.log("> schema:",schema);
+                //console.log("> handleError:",handleError);
+                //console.log("> name:",name);
 
                 let errorMessage: string | null = null;
 
@@ -58,7 +58,6 @@ export const ZodForm: FC<ZodFormProps> = (props) => {
             }
         }
 
-        console.log("isExistError:",isExistError);
         if (!isExistError) {
             props.onSubmit(formValues);
         }
