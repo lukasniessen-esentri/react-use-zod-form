@@ -1,6 +1,6 @@
 {
   "name": "@lukasniessenesentri/react-zod-form",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "Performant, flexible and extensible forms library for React Hooks using Zod",
   "main": "src/main.ts",
   "scripts": {

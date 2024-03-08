@@ -28,8 +28,8 @@ import { ZodBaseInputProps } from "./ZodBaseInputProps";
  */
 
 export interface ZodProps {
-    zs?: ZodSchema<any>;
-    handleError?: ErrorHandler;
+    ZodSchema?: ZodSchema<any>;
+    HandleError?: ErrorHandler;
     name: string;
 }
 

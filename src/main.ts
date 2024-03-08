@@ -4,8 +4,8 @@ import { ErrorHandler } from './types/ErrorHandler';
 
 declare module 'react' {
   interface ExtendedProps {
-    zs?: ZodSchema;
-    handleError?: ErrorHandler;
+    ZodSchema?: ZodSchema;
+    HandleError?: ErrorHandler;
   }
 
   interface ExtendedInput extends React.DetailedHTMLProps<
@@ -18,6 +18,8 @@ declare module 'react' {
     HTMLTextAreaElement
   >, ExtendedProps {}
 
+  interface InputProps extends ExtendedProps {}
+
   namespace JSX {
     interface IntrinsicElements {
       input: ExtendedInput;
@@ -26,8 +28,15 @@ declare module 'react' {
   }
 }
 
-export { ZodInput } from './components/ZodInput';
+declare global {
+  namespace JSX {
+    interface IntrinsicAttributes {
+      ZodSchema?: ZodSchema;
+      HandleError?: ErrorHandler;
+    }
+  }
+}
+
 export { ZodForm as ZodForm } from './components/ZodForm';
-export { ZodTextarea } from './components/ZodTextarea';
 
 patchProperties();

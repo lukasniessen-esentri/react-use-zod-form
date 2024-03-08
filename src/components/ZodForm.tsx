@@ -3,7 +3,6 @@ import React, { FC, FormEvent } from 'react';
 import { ZodProps } from '../types/ZodInputProps';
 import { FormValues } from '../types/FormValues';
 import { ZodFormProps } from '../types/ZodFormProps';
-import { isElementZodBaseField } from '../utils/ZodBaseFieldCheck';
 
 /**
  * ALL children with input must have "name" property set to function properly
@@ -30,10 +29,10 @@ export const ZodForm: FC<ZodFormProps> = (props) => {
 
             // We only check those elements that have "zs" defined on them
             const props = child.props as ZodProps;
-            const zodSchema = props.zs;
+            const zodSchema = props.ZodSchema;
 
             if (zodSchema) {
-                const handleError = props.handleError;
+                const handleError = props.HandleError;
                 const name = props.name;
 
                 //console.log("> schema:",schema);

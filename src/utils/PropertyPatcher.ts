@@ -6,8 +6,8 @@
  */
 
 const properties = [
-    "zs",
-    "on-error"
+    "ZodSchema",
+    "HandleError"
 ];
 
 export function patchProperties() {
