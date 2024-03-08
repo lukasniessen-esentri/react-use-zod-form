@@ -4,11 +4,10 @@ import { ZodInputProps } from '../types/ZodInputProps';
 /**
  * @deprecated The should not be used
  */
-export const ZodInput: React.FC<ZodInputProps> = ({ schema, handleError, ...props }) => {
+export const ZodInput: React.FC<ZodInputProps> = ({ zs, handleError, ...props }) => {
 
   return (
     <input
-      zs={schema}
       {...props}
       name={props.name}
     />

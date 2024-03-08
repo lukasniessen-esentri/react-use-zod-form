@@ -1,26 +1,14 @@
 # TODO URGENT
 
----
-RESTRUCTURING COMING
-New way of doing it:
+- Rename "Zs" to "ZodSchema" or sth
+- Or allow both
 
-We use monkey patching and ts module config changes to 
-allow "zs" attribute on elements. Via that users pass their ZodSchema to their element.
-The whole form is wrapper into a <ZodForm> or something and it will detect whether there is a form inside or not.
-If not, it will create one, else it will use that one and modify the submit handling.
-The submit handling will simply check all schemas and do what we are doing right now.
----
+- Add patching for things like "Required", "IsValid" (for function that will validate), other things
 
+- Maybe rename the library then?
 
-- Add alternative way of doing it for UI libraries:
-<ZI validation="..." name="...">
-    <YourInputElement ... />
-</ZI>
-Or name must be in YourInputEl.
-Similar thing for form. <ZF> ... </ZF> maybe.
-
-OR consider this:
-inputs must have an ID. That ID must be used in a zodvalidator 
+- Note: our monkey patched attribute all start with Capital letters. That is to avoid confusion and collusion with other libraries. 
+  It marks them and avoids problems.
 
 - JS compatitble and JS docs
 

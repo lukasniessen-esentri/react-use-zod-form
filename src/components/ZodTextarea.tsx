@@ -4,7 +4,7 @@ import { ZodTextareaProps } from '../types/ZodInputProps';
 /**
  * @deprecated The should not be used
  */
-export const ZodTextarea: React.FC<ZodTextareaProps> = ({ schema, handleError, ...props }) => {
+export const ZodTextarea: React.FC<ZodTextareaProps> = ({ zs, handleError, ...props }) => {
 
   return (
     <textarea

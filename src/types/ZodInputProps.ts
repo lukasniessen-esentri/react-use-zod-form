@@ -28,7 +28,7 @@ import { ZodBaseInputProps } from "./ZodBaseInputProps";
  */
 
 export interface ZodProps {
-    schema?: ZodSchema<any>;
+    zs?: ZodSchema<any>;
     handleError?: ErrorHandler;
     name: string;
 }

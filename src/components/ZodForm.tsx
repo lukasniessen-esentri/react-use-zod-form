@@ -28,11 +28,11 @@ export const ZodForm: FC<ZodFormProps> = (props) => {
                 continue;
             }
 
-            // We only check ZodBaseField elements
-            if (isElementZodBaseField(child)) {
-                const props = child.props as ZodProps;
+            // We only check those elements that have "zs" defined on them
+            const props = child.props as ZodProps;
+            const zodSchema = props.zs;
 
-                const schema = props.schema;
+            if (zodSchema) {
                 const handleError = props.handleError;
                 const name = props.name;
 
@@ -41,14 +41,11 @@ export const ZodForm: FC<ZodFormProps> = (props) => {
                 //console.log("> name:",name);
 
                 let errorMessage: string | null = null;
+                const result = zodSchema.safeParse(formValues[name]);
 
-                if (schema) {
-                    const result = schema.safeParse(formValues[name]);
-
-                    if (!result.success) {
-                        isExistError = true;
-                        errorMessage = result.error.errors[0].message;
-                    }
+                if (!result.success) {
+                    isExistError = true;
+                    errorMessage = result.error.errors[0].message;
                 }
 
                 // handle error in any case, in success case signaling the success
