@@ -11,12 +11,13 @@ and thereby allows writing form validaiton with zero-boilerplate code.
 Working example:
 
 ```
-import { ZodForm, ZodInput, ZodTextarea } from 'react-zod-form';
-import './App.css'
-import z from "zod";
-import { useState } from 'react';
+import React, { useState } from 'react';
+import { ZodForm } from 'react-zod-form';
+import { z } from 'zod';
+import { Input as MuiInput } from '@mui/material';
+import { Input as ChakraInput } from '@chakra-ui/react'
 
-function App() {
+export const VanillaForm = () => {
 
   const mailSchema = z.string().email("Invalid email");
   const min10 = z.string().min(10, "Too short");
@@ -58,47 +59,58 @@ function App() {
     
   }
 
-  return (
-    <>
-      <ZodForm onSubmit={handleSubmit}>
-
-        <ZodInput 
-          name="name1" 
-          schema={min10} 
-          placeholder="Name..."
-          handleError={onErrorName}
-        />
-        <p>{errorName}</p>
-
-        <ZodInput 
-          name="mail2" 
-          schema={mailSchema}
-          placeholder="Email..."
-          handleError={onErrorMail}
-        />
-        <p>{errorMail}</p>
-
-        <ZodTextarea 
-          name="long" 
-          schema={min20}
-          placeholder="Longer..."
-          handleError={onErrorLong}
-        />
-        <p>{errorSuperLong}</p>
-
-      </ZodForm>
-
-      {success && (
+    return (
         <>
-          <h1>Passed:</h1>
-          <p>
-            {success}
-          </p>
-        </>
-      )}
-    </>
-  )
-}
+            <ZodForm onSubmit={handleSubmit}>
 
-export default App
+                <MuiInput 
+                    name="name1" 
+                    placeholder="Name..."
+                    ZodSchema={min10} 
+                    HandleError={onErrorName}
+                />
+                <p>{errorName}</p>
+
+                <ChakraInput 
+                    name="name99" 
+                    placeholder="chakra name..."
+                    ZodSchema={min10} 
+                    HandleError={onErrorName}
+                />
+                <p>{errorName}</p>
+
+                <input 
+                    name="mail2" 
+                    placeholder="Email bruva..."
+                    ZodSchema={mailSchema}
+                    HandleError={onErrorMail}
+                />
+                <p>{errorMail}</p>
+
+                <textarea 
+                    name="long" 
+                    placeholder="Longer..."
+                    ZodSchema={min20}
+                    HandleError={onErrorLong}
+                />
+                <p>{errorSuperLong}</p>
+
+                <input 
+                    name="rnd4" 
+                    placeholder="Random things man..."
+                />
+
+            </ZodForm>
+
+            {success && (
+                <>
+                    <h1>Passed:</h1>
+                    <p>
+                        {success}
+                    </p>
+                </>
+            )}
+        </>
+    );
+};
 ```
