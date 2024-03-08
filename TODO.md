@@ -1,5 +1,17 @@
 # TODO URGENT
 
+---
+RESTRUCTURING COMING
+New way of doing it:
+
+We use monkey patching and ts module config changes to 
+allow "zs" attribute on elements. Via that users pass their ZodSchema to their element.
+The whole form is wrapper into a <ZodForm> or something and it will detect whether there is a form inside or not.
+If not, it will create one, else it will use that one and modify the submit handling.
+The submit handling will simply check all schemas and do what we are doing right now.
+---
+
+
 - Add alternative way of doing it for UI libraries:
 <ZI validation="..." name="...">
     <YourInputElement ... />
@@ -9,6 +21,12 @@ Similar thing for form. <ZF> ... </ZF> maybe.
 
 OR consider this:
 inputs must have an ID. That ID must be used in a zodvalidator 
+
+- JS compatitble and JS docs
+
+- Double valid import src ?? fix
+
+- If TS configs are needed, add info about that in docs!!
 
 - Allow non-zod validation
 

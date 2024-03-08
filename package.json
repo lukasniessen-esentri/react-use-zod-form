@@ -1,9 +1,8 @@
 {
   "name": "@lukasniessenesentri/react-zod-form",
-  "version": "1.0.10",
+  "version": "1.0.12",
   "description": "Performant, flexible and extensible forms library for React Hooks using Zod",
-  "main": "src/index.ts",
-  "types": "zodform.d.ts",
+  "main": "src/main.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },

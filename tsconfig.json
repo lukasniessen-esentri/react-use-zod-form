@@ -22,7 +22,6 @@
       "declaration": true
     },
     "include": [
-      "src",
-      "zodform.d.ts"
+      "src"
     ]
   }
