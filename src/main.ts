@@ -1,11 +1,14 @@
 import { ZodSchema } from 'zod';
 import { patchProperties } from './utils/PropertyPatcher';
 import { ErrorHandler } from './types/ErrorHandler';
+import { CustomValidator } from './types/CustomValidator';
 
 declare module 'react' {
   interface ExtendedProps {
     ZodSchema?: ZodSchema;
     HandleError?: ErrorHandler;
+    IsRequired?: string;
+    IsValid?: CustomValidator;
   }
 
   interface ExtendedInput extends React.DetailedHTMLProps<

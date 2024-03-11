@@ -7,7 +7,9 @@
 
 const properties = [
     "ZodSchema",
-    "HandleError"
+    "HandleError",
+    "Required",
+    "IsValid"
 ];
 
 export function patchProperties() {

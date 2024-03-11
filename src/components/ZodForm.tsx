@@ -3,6 +3,7 @@ import React, { FC, FormEvent } from 'react';
 import { ZodProps } from '../types/ZodInputProps';
 import { FormValues } from '../types/FormValues';
 import { ZodFormProps } from '../types/ZodFormProps';
+import { doesInputPassZodProps, isZodPropsNonEmpty } from '../utils/ZodPropsHelper';
 
 /**
  * ALL children with input must have "name" property set to function properly
@@ -27,27 +28,30 @@ export const ZodForm: FC<ZodFormProps> = (props) => {
                 continue;
             }
 
-            // We only check those elements that have "zs" defined on them
             const props = child.props as ZodProps;
-            const zodSchema = props.ZodSchema;
-
-            if (zodSchema) {
+            
+            if (isZodPropsNonEmpty(props)) {
                 const handleError = props.HandleError;
                 const name = props.name;
 
-                //console.log("> schema:",schema);
-                //console.log("> handleError:",handleError);
-                //console.log("> name:",name);
+                if (!name) {
+                    console.warn("Name required on ZodForm fields! Please specify name='...'. See docs.")
+                }
 
                 let errorMessage: string | null = null;
-                const result = zodSchema.safeParse(formValues[name]);
+                const input = formValues[name] as string;
 
+                const result = doesInputPassZodProps(input, props);
+
+                console.log(">>> result:",result);
+                
                 if (!result.success) {
                     isExistError = true;
-                    errorMessage = result.error.errors[0].message;
+                    errorMessage = result.errorMessage!;
                 }
 
                 // handle error in any case, in success case signaling the success
+                // by passing null
                 if (handleError) {
                     handleError(errorMessage);
                 }

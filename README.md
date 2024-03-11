@@ -23,11 +23,15 @@ pass all properties you assigned to it. If none specified, it passes always.
 If multiple on one input, all of them must pass. If one does not pass, "onError" is called.
 All inputs that fail have their onErrors called, not only the first fail.
 
+But: For multiple on one input, only the first one will trigger the error message to be shown.
+--> Order of checking: Required 1st, zodSchema 2nd, isValid 3rd
+
 ---
 
 Working example:
 
 ```
+
 import React, { useState } from 'react';
 import { ZodForm } from 'react-zod-form';
 import { z } from 'zod';
@@ -43,6 +47,7 @@ export const VanillaForm = () => {
   const [errorName, setErrorName] = useState("");
   const [errorMail, setErrorMail] = useState("");
   const [errorSuperLong, setErrorSuperLong] = useState("");
+  const [errorRnd4, setErrorRnd4] = useState("");
   const [success, setSuccess] = useState("");
 
   function onErrorMail(msg: string | null) {
@@ -69,11 +74,24 @@ export const VanillaForm = () => {
     }
   }
 
+  function onErrorRnd4(msg: string | null) {
+    if (msg) {
+        setErrorRnd4(msg);
+    } else {
+        setErrorRnd4("");
+    }
+  }
+
   function handleSubmit(formData: any) {
-    console.log("SUBMIT SUCCESSFUL");
     setSuccess(JSON.stringify(formData));
     console.log(formData);
-    
+  }
+
+  function customValidator(input: string) {
+    return {
+        success: input.includes("cool"),
+        errorMessage: "Must include word 'cool'"
+    };
   }
 
     return (
@@ -115,7 +133,11 @@ export const VanillaForm = () => {
                 <input 
                     name="rnd4" 
                     placeholder="Random things man..."
+                    IsRequired="value required"
+                    IsValid={customValidator}
+                    HandleError={onErrorRnd4}
                 />
+                <p>{errorRnd4}</p>
 
             </ZodForm>
 
