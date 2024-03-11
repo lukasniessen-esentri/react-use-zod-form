@@ -2,11 +2,28 @@
 
 Unfinished test version.
 
+---
+
 Installation:
 `npm i @lukasniessenesentri/react-zod-form`
 
 Uses monkey patching for defining attributes on all form related elements
 and thereby allows writing form validaiton with zero-boilerplate code.
+
+---
+
+Properties you can add:
+- ZodSchema: zod schema that must pass
+- Required: Must be non empty, trims the string for check
+- IsValid: Custom validation function (input: string) -> boolean
+
+How it works:
+onSubmit method you specified is only called if all input fields
+pass all properties you assigned to it. If none specified, it passes always.
+If multiple on one input, all of them must pass. If one does not pass, "onError" is called.
+All inputs that fail have their onErrors called, not only the first fail.
+
+---
 
 Working example:
 
@@ -114,3 +131,7 @@ export const VanillaForm = () => {
     );
 };
 ```
+
+---
+
+Note: our monkey patched attribute all start with Capital letters. That is to avoid confusion and collusion with other libraries. It marks them and avoids problems.
